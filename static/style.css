@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+:root {
+  --bg-dark: #010a0a;
+  --bg-panel: #021515;
+  --accent: #00ffc3;
+  --accent-dim: #00b896;
+  --text-primary: #c8fff0;
+  --text-dim: #79b9a7;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Share Tech Mono", monospace;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--accent-dim);
+  background: var(--bg-panel);
+  padding: 10px 20px;
+  box-shadow: 0 0 12px var(--accent-dim);
+}
+
+header h1 {
+  font-size: 1.2rem;
+  color: var(--accent);
+  letter-spacing: 2px;
+  margin: 0;
+  text-shadow: 0 0 8px var(--accent);
+}
+
+.status-lights {
+  font-size: 0.85rem;
+  margin-top: 6px;
+  color: var(--text-dim);
+}
+
+.light {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 6px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.light.online { background: #00ff95; }
+.light.link { background: #00eaff; }
+.light.sat { background: #00ffea; }
+
+#datetime {
+  font-size: 0.9rem;
+  color: var(--accent);
+}
+
+#dashboard {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+#sidebar {
+  width: 28%;
+  background: var(--bg-panel);
+  border-right: 2px solid var(--accent-dim);
+  padding: 20px;
+  overflow-y: auto;
+}
+
+#sidebar h2 {
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent-dim);
+  padding-bottom: 4px;
+  margin-top: 0;
+}
+
+#map-section {
+  position: relative;
+  flex: 1;
+  background: #000;
+  border-left: 2px solid var(--accent-dim);
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+  border: none;
+  z-index: 1;
+}
+
+#refresh-map {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  background: rgba(0, 255, 195, 0.15);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 6px 10px;
+  text-shadow: 0 0 8px var(--accent);
+  transition: all 0.25s ease;
+  z-index: 1002;
+}
+
+#refresh-map:hover {
+  background: rgba(0, 255, 195, 0.3);
+  box-shadow: 0 0 12px var(--accent);
+}
+
+#satellite-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#satellite-list li {
+  padding: 6px 0;
+  border-bottom: 1px solid #03433e;
+}
+
+.sat-name {
+  color: var(--accent);
+  cursor: pointer;
+  font-weight: bold;
+  display: block;
+  transition: color 0.2s ease;
+}
+
+.sat-name:hover { color: #ffffff; }
+
+.sat-details {
+  display: none;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-top: 4px;
+  padding-left: 8px;
+  border-left: 2px solid var(--accent-dim);
+}
+
+.sat-details.visible {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+.log {
+  background: #000;
+  border: 1px solid var(--accent-dim);
+  padding: 10px;
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-top: 10px;
+  height: 100px;
+  overflow-y: auto;
+  box-shadow: inset 0 0 8px rgba(0,255,195,0.2);
+}
+
+.log p.info { color: var(--text-dim); }
+.log p.success { color: var(--accent); }
+.log p.error { color: #ff5555; }
+
+footer {
+  background: var(--bg-panel);
+  border-top: 1px solid var(--accent-dim);
+  text-align: center;
+  padding: 8px;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.radar-marker { position: relative; width: 20px; height: 20px; }
+
+.radar-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px 3px rgba(0,255,195,0.4);
+  animation: radarPulse 2s infinite;
+}
+
+@keyframes radarPulse {
+  0% { transform: translate(-50%, -50%) scale(0.7); opacity: 1; }
+  70% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-thumb {
+  background: var(--accent-dim);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+
+#boot-screen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  color: #00ffbf;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+#boot-terminal {
+  width: 80%;
+  max-width: 800px;
+  height: 300px;
+  border: 1px solid #00ffbf;
+  padding: 20px;
+  box-shadow: 0 0 20px #00ffbf;
+  background: #010a0a;
+}
+
+#boot-log {
+  white-space: pre-wrap;
+  line-height: 1.3em;
+  color: #00ffbf;
+  text-shadow: 0 0 8px #00ffbf;
+}
+
+.fade-out { animation: fadeOut 1.5s forwards; }
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; visibility: hidden; }
+}

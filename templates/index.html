@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SATELEYE // Orbital Surveillance Node</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+
+<body>
+  
+  <div id="boot-screen">
+    <div id="boot-terminal">
+      <div id="boot-log"></div>
+    </div>
+  </div>
+
+  
+  <header id="main-header" style="display:none;">
+    <div class="header-left">
+      <h1>SATELEYE // ORBITAL SURVEILLANCE NODE</h1>
+      <div class="status-lights">
+        <span class="light online"></span> SYSTEM ONLINE
+        <span class="light link"></span> LINK STABLE
+        <span class="light sat"></span> SAT FEED OK
+      </div>
+    </div>
+    <div class="header-right">
+      <p id="datetime"></p>
+    </div>
+  </header>
+
+  
+  <main id="dashboard" style="display:none;">
+    
+    <aside id="sidebar" class="card">
+      <section id="ucs-panel">
+        <h2>📡 SYSTEM LOG</h2>
+        <p><b>Status:</b> <span id="ucs-status">Initializing...</span></p>
+        <p><b>Last Update:</b> <span id="ucs-date">---</span></p>
+        <div id="ucs-log" class="log"></div>
+      </section>
+
+      <section id="satellite-list">
+        <h2>🛰️ ACTIVE SATELLITES</h2>
+        <ul id="sat-list"></ul>
+      </section>
+    </aside>
+
+    
+    <section id="map-section" class="card">
+      <div id="map"></div>
+      <button id="refresh-map" title="Manual Sync">⟳</button>
+    </section>
+  </main>
+
+  <footer id="main-footer" style="display:none;">
+    <p>Zer0plusOne | Classified Orbital Intelligence Program | SATELEYE</p>
+  </footer>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+# === SATELEYE v1.0 ===
+# Core dependencies for Orbital Surveillance Node
+# Author: Zer0plusOne
+# Date: November 2025
+
+Flask==3.0.3
+pandas==2.2.3
+requests==2.32.3
+openpyxl==3.1.5
+gunicorn==23.0.0      # optional, for production deployment
+Werkzeug==3.0.2
+Jinja2==3.1.4
+itsdangerous==2.2.0
+click==8.1.7
